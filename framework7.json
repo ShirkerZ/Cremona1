@@ -1,0 +1,19 @@
+{
+  "cwd": "/Users/dueper/htdocs/Framework7/Cremona1",
+  "type": [
+    "web"
+  ],
+  "name": "Cremona1",
+  "framework": "vue",
+  "template": "tabs",
+  "cssPreProcessor": "scss",
+  "bundler": "vite",
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false
+}
