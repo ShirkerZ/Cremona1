@@ -1,14 +1,11 @@
 
 import HomePage from '../pages/home.vue';
-import AboutPage from '../pages/about.vue';
-import FormPage from '../pages/form.vue';
 import Programs from '../pages/programs.vue';
-import ProductPage from '../pages/product.vue';
 import SchedulePage from '../pages/schedule.vue';
+import MenuPage from '../pages/menu.vue';
 import VideoDetails from "../components/VideoDetails.vue";
 import ProgramDetails from "../components/ProgramDetails.vue";
 
-import DynamicRoutePage from '../pages/dynamic-route.vue';
 import RequestAndLoad from '../pages/request-and-load.vue';
 import NotFoundPage from '../pages/404.vue';
 
@@ -18,24 +15,16 @@ var routes = [
     component: HomePage,
   },
   {
-    path: '/about/',
-    component: AboutPage,
-  },
-  {
-    path: '/form/',
-    component: FormPage,
-  },
-  {
     path: '/programs/',
     component: Programs,
   },
   {
-    path: '/product/:id/',
-    component: ProductPage,
-  },
-  {
     path: '/schedule/',
     component: SchedulePage,
+  },
+  {
+    path: '/menu/',
+    component: MenuPage,
   },
   {
     path: '/video/:id',
@@ -44,11 +33,6 @@ var routes = [
   {
     path: '/program/:id',
     popup: { component: ProgramDetails },
-  },
-
-  {
-    path: '/dynamic-route/blog/:blogId/post/:postId/',
-    component: DynamicRoutePage,
   },
   {
     path: '/request-and-load/user/:userId/',

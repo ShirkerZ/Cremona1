@@ -12,7 +12,8 @@ const store = createStore({
     programList: null,
     programDetails: null,
     programVideos: null,
-    schedule: null
+    schedule: null,
+    menuLinks: null
   },
 
   getters: {
@@ -42,6 +43,10 @@ const store = createStore({
 
     schedule({ state }) {
       return state.schedule
+    },
+
+    menuLinks({ state }) {
+      return state.menuLinks
     },
   },
 
@@ -87,6 +92,7 @@ const store = createStore({
 
     //  Schedule
     fetchSchedule({ state }, payload) {
+
       if (!payload) {
         const date = new Date()
         let month = date.getMonth() + 1
@@ -100,11 +106,18 @@ const store = createStore({
           day = '0' + day
 
         payload = [year, month, day].join('-')
-        console.log('Payload: ', payload)
 
       }
+
       axios.get(`/wp-json/wp/v2/palinsesto?date=${payload}`).then(res => {
         state.schedule = res.data
+      })
+    },
+
+    //  Menu
+    fetchMenuLinks({ state }) {
+      axios.get('').then(res => {
+        state.menuLinks = res.data
       })
     }
   },

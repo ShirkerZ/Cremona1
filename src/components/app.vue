@@ -48,7 +48,6 @@
       <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
       <f7-view id="view-home" main tab tab-active url="/"></f7-view>
 
-      <!-- Catalog View -->
       <f7-view
         id="view-programs"
         name="programs"
@@ -56,13 +55,13 @@
         url="/programs/"
       ></f7-view>
 
-      <!-- Settings View -->
       <f7-view
         id="view-schedule"
         name="schedule"
         tab
         url="/schedule/"
       ></f7-view>
+      <f7-view id="view-menu" name="menu" tab url="/menu/"></f7-view>
     </f7-views>
   </f7-app>
 </template>
