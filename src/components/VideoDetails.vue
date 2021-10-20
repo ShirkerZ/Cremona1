@@ -52,7 +52,7 @@ export default {
     const goBack = () => {
       f7router.back();
     };
-console.log("video id: ", videoId)
+    console.log("video id: ", videoId);
     const videoDetails = useStore("videoDetails");
     const videoAdvertise = useStore("videoAdvertise");
 
@@ -127,7 +127,7 @@ console.log("video id: ", videoId)
     .video {
       background: darkblue;
       width: 100%;
-      min-height: 30vh;
+      min-height: 20vh;
     }
     .details {
       margin: 1rem 1rem 0;
@@ -188,6 +188,7 @@ console.log("video id: ", videoId)
           p {
             margin: 0;
             padding: 0.1rem 0;
+            color: rgb(243, 243, 243);
           }
 
           .title {

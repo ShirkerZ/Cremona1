@@ -24,7 +24,7 @@ export default {
 .live {
   background: darkblue;
   width: 100%;
-  height: 35vh;
+  min-height: 30vh;
   overflow: hidden;
 
   iframe {

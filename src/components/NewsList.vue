@@ -56,6 +56,7 @@ export default {
     max-width: 100vw;
     overflow: scroll;
     display: flex;
+    align-items: flex-start;
     padding: 0 1rem;
     gap: 0 1rem;
 

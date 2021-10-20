@@ -117,7 +117,7 @@ export default {
   }
 
   .videos-container {
-    .description {
+    .subtitle {
       p {
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -145,11 +145,12 @@ export default {
       }
       .veil {
         position: absolute;
+        bottom: -1%;
         width: 100%;
         height: 40vh;
         background-image: linear-gradient(
-          rgba(255, 0, 0, 0),
-          rgba(255, 255, 255, 1)
+          rgba(0, 0, 0, 0),
+          rgba(18, 18, 18, 1)
         );
       }
       .content {
@@ -222,7 +223,7 @@ export default {
               overflow: hidden;
             }
 
-            .description {
+            .subtitle {
               font-size: 0.7rem;
               text-align: left;
             }
