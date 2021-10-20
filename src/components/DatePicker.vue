@@ -2,7 +2,7 @@
   <div class="date-picker-container">
     <f7-list>
       <f7-list-item
-        :title="selectedDate"
+        :title="getDateLabel(selectedDate)"
         smart-select
         :smart-select-params="{
           openIn: 'sheet',
@@ -63,6 +63,16 @@ export default {
   methods: {
     dateSelected() {
       store.dispatch("fetchSchedule", this.selectedDate);
+      // this.getDateLabel(this.selectedDate);
+    },
+
+    getDateLabel(selectedDate) {
+      if (selectedDate.length) {
+        let foundDate = this.week.find((date) => date.date == selectedDate);
+        return foundDate.label;
+      } else {
+        return selectedDate;
+      }
     },
   },
 

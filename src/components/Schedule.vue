@@ -20,13 +20,26 @@
 </template>
 
 <script>
+import { useStore } from "framework7-vue";
+import store from "../js/store.js";
+
 export default {
-  props: {
-    schedule: Object,
+  setup() {
+    const schedule = useStore("schedule");
+
+    return {
+      schedule,
+    };
   },
 
   mounted() {
-    console.log("Schedule: ", this.schedule);
+    store.dispatch("fetchSchedule");
+  },
+
+  watch: {
+    schedule(newValue, oldValue) {
+      this.schedule = newValue;
+    },
   },
 };
 </script>

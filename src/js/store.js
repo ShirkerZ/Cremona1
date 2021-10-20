@@ -79,7 +79,6 @@ const store = createStore({
 
     fetchProgramDetails({ state }, payload) {
       axios.get(`/wp-json/wp/v2/programma/${payload}?_fields=id, title, content, better_featured_image, presentatore`).then((res) => {
-        console.log("Program details: ", res.data)
         state.programDetails = res.data
       })
     },
