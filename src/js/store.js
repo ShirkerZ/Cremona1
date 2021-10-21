@@ -13,7 +13,9 @@ const store = createStore({
     programDetails: null,
     programVideos: null,
     schedule: null,
-    menuLinks: null
+    menuLinks: null,
+    foundPrograms: null,
+    foundVideos: null,
   },
 
   getters: {
@@ -47,6 +49,14 @@ const store = createStore({
 
     menuLinks({ state }) {
       return state.menuLinks
+    },
+
+    foundPrograms({ state }) {
+      return state.foundPrograms
+    },
+
+    foundVideos({ state }) {
+      return state.foundVideos
     },
   },
 
@@ -118,7 +128,22 @@ const store = createStore({
       axios.get('').then(res => {
         state.menuLinks = res.data
       })
-    }
+    },
+
+    //  Search
+    fetchSearchProgram({ state }, payload) {
+      axios.get(`/wp-json/wp/v2/programma?search=${payload}&_fields=id, title, content, better_featured_image&per_page=10`).then(res => {
+        console.log("Search program: ", res.data)
+        state.foundPrograms = res.data
+      })
+    },
+
+    fetchSearchVideo({ state }, payload) {
+      axios.get(`/wp-json/wp/v2/video?search=${payload}&_fields=id, title, content, better_featured_image&per_page=10`).then(res => {
+        console.log("Search video: ", res.data)
+        state.foundVideos = res.data
+      })
+    },
   },
 })
 export default store;

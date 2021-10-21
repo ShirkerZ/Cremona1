@@ -1,14 +1,16 @@
 <template>
   <f7-app v-bind="f7params" theme-dark>
     <!-- Right panel with reveal effect-->
-    <f7-panel right reveal theme-dark>
+    <!-- <f7-panel right cover theme-dark>
       <f7-view>
         <f7-page>
           <f7-navbar title="Right Panel"></f7-navbar>
           <f7-block>Right panel content goes here</f7-block>
         </f7-page>
       </f7-view>
-    </f7-panel>
+    </f7-panel> -->
+
+    <SearchPanel />
 
     <!-- Views/Tabs container -->
     <f7-views tabs class="safe-areas">
@@ -72,7 +74,13 @@ import { f7, f7ready } from "framework7-vue";
 import routes from "../js/routes.js";
 import store from "../js/store";
 
+import SearchPanel from "./SearchPanel.vue";
+
 export default {
+  components: {
+    SearchPanel,
+  },
+
   setup() {
     // Framework7 Parameters
     const f7params = {
