@@ -75,6 +75,7 @@ export default {
     handleSearch() {
       store.dispatch("fetchSearchProgram", this.query);
       store.dispatch("fetchSearchVideo", this.query);
+      this.query = null;
     },
   },
 };
@@ -82,8 +83,6 @@ export default {
 
 <style lang="scss" scoped>
 .search-panel {
-  // width: 100vw;
-
   form {
     width: 100%;
 
