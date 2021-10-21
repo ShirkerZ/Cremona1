@@ -32,3 +32,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.lists {
+  padding-bottom: 1rem;
+}
+</style>

@@ -174,7 +174,7 @@ export default {
     .details {
       margin: 1rem 1rem 0;
       padding-bottom: 1rem;
-      border-bottom: 1px solid gray;
+      border-bottom: 1px solid #182534;
       p {
         margin: 0;
       }

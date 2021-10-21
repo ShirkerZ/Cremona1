@@ -50,9 +50,8 @@ export default {
 
   .preview {
     width: 100%;
-    height: 20vh;
+    min-height: 20vh;
     max-height: 150px;
-    overflow: hidden;
 
     img {
       width: 100%;
@@ -61,11 +60,9 @@ export default {
 
   .content {
     width: 100%;
-    padding-top: 0.5rem;
 
     p {
       margin: 0;
-      // color: rgb(243, 243, 243);
       color: var(--f7-color-primary);
     }
 

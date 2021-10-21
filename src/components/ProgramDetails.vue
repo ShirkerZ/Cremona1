@@ -189,16 +189,14 @@ export default {
         width: 100%;
         height: 40vh;
         position: absolute;
+        object-fit: cover;
       }
       .veil {
         position: absolute;
         bottom: -1%;
         width: 100%;
         height: 40vh;
-        background-image: linear-gradient(
-          rgba(0, 0, 0, 0),
-          rgba(18, 18, 18, 1)
-        );
+        background-image: linear-gradient(rgba(0, 0, 0, 0), #021021);
       }
       .content {
         position: absolute;
@@ -243,7 +241,6 @@ export default {
           .preview {
             min-width: 50%;
             height: 15vh;
-            background: darkblue;
 
             img {
               width: 100%;
