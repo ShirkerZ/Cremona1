@@ -31,7 +31,6 @@ export default {
   align-items: flex-start;
 
   .preview {
-    background: darkblue;
     width: 30vw;
     max-width: 30vw;
     height: 23vh;

@@ -2,7 +2,7 @@
   <div class="list-container">
     <div>
       <div class="list-label">Ultime notizie</div>
-      <div class="list-program">
+      <div class="list-videos" v-if="videoList">
         <Video
           v-for="video of videoList"
           :key="video.id"
@@ -11,6 +11,21 @@
           :title="video.title.rendered"
           :content="video.content.rendered"
         />
+      </div>
+
+      <div class="skeleton-video-list" v-else>
+        <div class="skeleton-video" v-for="skeleton of 5" :key="skeleton">
+          <f7-skeleton-block class="skeleton-video-preview" effect="wave">
+          </f7-skeleton-block>
+          <div class="skeleton-video-content">
+            <f7-skeleton-text class="skeleton-video-title" effect="wave">
+              Lorem ipsum dolor sit consectetur.
+            </f7-skeleton-text>
+            <f7-skeleton-text class="skeleton-video-subtitle" effect="wave">
+              Lorem ipsum dolor sit consectetur.
+            </f7-skeleton-text>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -52,7 +67,7 @@ export default {
     padding: 0 1rem;
   }
 
-  .list-program {
+  .list-videos {
     max-width: 100vw;
     overflow: scroll;
     display: flex;
@@ -62,6 +77,40 @@ export default {
 
     &::-webkit-scrollbar {
       display: none;
+    }
+  }
+
+  .skeleton-video-list {
+    max-width: 100vw;
+    overflow: scroll;
+    display: flex;
+    align-items: flex-start;
+    padding: 0 1rem;
+    gap: 0 1rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .skeleton-video {
+      min-width: 65vw;
+      max-width: 250px;
+
+      .skeleton-video-preview {
+        height: 20vh;
+        max-height: 150px;
+      }
+
+      .skeleton-video-content {
+        padding-top: 0.5rem;
+
+        .skeleton-video-title {
+          font-size: 0.85rem;
+        }
+        .skeleton-video-subtitle {
+          font-size: 0.75rem;
+        }
+      }
     }
   }
 }

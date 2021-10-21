@@ -31,6 +31,21 @@
             ></div>
           </div>
         </div>
+
+        <!-- Skeleton program -->
+        <div class="skeleton-program-container" v-else>
+          <div class="skeleton-program-content">
+            <f7-skeleton-text class="skeleton-program-title" effect="wave">
+              Lorem ipsum dolor
+            </f7-skeleton-text>
+            <br />
+            <f7-skeleton-text class="skeleton-program-subtitle" effect="wave">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laudantium, voluptatibus.
+            </f7-skeleton-text>
+          </div>
+        </div>
+
         <div class="videos-container">
           <div class="videos-label">Puntate</div>
           <div class="videos" v-if="programVideos">
@@ -48,6 +63,25 @@
                 <p class="subtitle" v-html="video.content.rendered"></p>
               </div>
             </f7-link>
+          </div>
+
+          <!-- Skeletone more videos -->
+          <div class="skeleton-more-videos" v-else>
+            <div class="skeleton-video" v-for="video of 3" :key="video">
+              <f7-skeleton-block
+                class="skeleton-video-preview"
+                effect="wave"
+              ></f7-skeleton-block>
+
+              <div class="skeleton-video-content">
+                <f7-skeleton-text class="skeleton-video-title" effect="wave">
+                  Lorem ipsum dolor sit consectetur.
+                </f7-skeleton-text>
+                <f7-skeleton-text class="skeleton-video-subtitle" effect="wave">
+                  Lorem ipsum dolor
+                </f7-skeleton-text>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -227,6 +261,55 @@ export default {
               font-size: 0.7rem;
               text-align: left;
             }
+          }
+        }
+      }
+    }
+
+    .skeleton-program-container {
+      position: relative;
+      height: 40vh;
+
+      .skeleton-program-content {
+        position: absolute;
+        bottom: 0;
+        padding: 1rem;
+
+        .skeleton-program-title {
+          font-size: 2rem;
+          padding-top: 3rem;
+        }
+
+        .skeleton-program-subtitle {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .skeleton-more-videos {
+      .skeleton-video {
+        display: flex;
+        align-items: center;
+        margin: 0.5rem 0;
+        gap: 1rem;
+        height: 15vh;
+        max-height: 150px;
+
+        .skeleton-video-preview {
+          min-width: 50%;
+          height: 15vh;
+        }
+
+        .skeleton-video-content {
+          max-width: 50%;
+
+          .skeleton-video-title {
+            font-size: 0.85rem;
+          }
+
+          .skeleton-video-subtitle {
+            font-size: 0.75rem;
+            white-space: nowrap;
           }
         }
       }

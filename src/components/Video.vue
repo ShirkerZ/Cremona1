@@ -1,5 +1,5 @@
 <template>
-  <f7-link :href="`/video/${id}`" class="video">
+  <f7-link v-if="id" :href="`/video/${id}`" class="video">
     <div class="preview">
       <img :src="`${image}`" />
     </div>
@@ -49,7 +49,6 @@ export default {
   }
 
   .preview {
-    background: darkblue;
     width: 100%;
     height: 20vh;
     max-height: 150px;
