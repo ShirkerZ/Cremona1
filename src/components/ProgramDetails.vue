@@ -29,6 +29,9 @@
           <div class="veil"></div>
           <div class="content">
             <div class="title" v-html="programDetails.title.rendered"></div>
+            <div class="announcer" v-if="programDetails.presentatore">
+              <strong>Presentato da: </strong>{{ programDetails.presentatore }}
+            </div>
             <div
               @click="showLess = !showLess"
               :class="{ 'show-less': showLess }"
@@ -104,12 +107,12 @@ export default {
   setup(props) {
     const { f7route, f7router } = props;
     const programId = ref(f7route.params.id);
+    const programDetails = useStore("programDetails");
+    const programVideos = useStore("programVideos");
+
     const goBack = () => {
       f7router.back();
     };
-
-    const programDetails = useStore("programDetails");
-    const programVideos = useStore("programVideos");
 
     return {
       programId,
@@ -202,6 +205,7 @@ export default {
         position: absolute;
         bottom: 0;
         padding: 1rem;
+
         .title {
           position: relative;
           z-index: 10;
@@ -209,9 +213,15 @@ export default {
           font-weight: 700;
           padding-top: 3rem;
         }
-        .subtitle {
+        .description {
           font-size: 0.8rem;
           position: relative;
+          overflow: scroll;
+          max-height: 20vh;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
         }
       }
     }
