@@ -4,17 +4,17 @@
 
     <div class="links-container">
       <div class="main-links">
-        <a href="http://google.com">CR1 Diretta Plus</a>
-        <a href="http://google.com">Facebook</a>
-        <a href="http://google.com">Instagram</a>
-        <a href="http://google.com">Youtube</a>
-        <a href="http://google.com">Contatti</a>
+        <f7-link href="http://google.com" external>CR1 Diretta Plus</f7-link>
+        <f7-link href="http://google.com" external>Facebook</f7-link>
+        <f7-link href="http://google.com" external>Instagram</f7-link>
+        <f7-link href="http://google.com" external>Youtube</f7-link>
+        <f7-link href="http://google.com" external>Contatti</f7-link>
       </div>
 
       <div class="other-links">
-        <a href="http://google.com">Scopri gli studi</a>
-        <a href="http://google.com">Terms of Use</a>
-        <a href="http://google.com">Privacy Policy</a>
+        <f7-link href="http://google.com" external>Scopri gli studi</f7-link>
+        <f7-link href="http://google.com" external>Terms of Use</f7-link>
+        <f7-link href="http://google.com" external>Privacy Policy</f7-link>
         <div class="version">Iphone v2.5.8</div>
       </div>
     </div>
@@ -46,7 +46,8 @@ export default {
     flex-direction: column;
 
     a {
-      text-align: left;
+      display: block;
+
       color: rgb(243, 243, 243);
     }
   }
@@ -58,6 +59,7 @@ export default {
       width: 100%;
       padding: 0.5rem 0;
       border-bottom: 1px solid #182534;
+      
       &:last-child {
         border: none;
       }
@@ -68,7 +70,7 @@ export default {
     font-size: 0.8rem;
 
     a {
-        padding: .1rem 0;
+      padding: 0.1rem 0;
     }
     .version {
       margin-top: 2rem;
