@@ -106,7 +106,7 @@ export default {
 <style lang="scss" scoped>
 .date-picker-container {
   .list {
-    margin-bottom: 0;
+    margin: .5rem 0 0;
   }
 }
 </style>

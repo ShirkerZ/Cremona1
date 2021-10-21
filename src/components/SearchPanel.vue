@@ -82,10 +82,14 @@ export default {
 
 <style lang="scss" scoped>
 .search-panel {
-  width: 100vw;
+  // width: 100vw;
 
-  input {
-    margin-left: 1rem;
+  form {
+    width: 100%;
+
+    input {
+      margin-left: 1rem;
+    }
   }
 
   .results-container {
