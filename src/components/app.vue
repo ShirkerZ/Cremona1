@@ -65,7 +65,7 @@ import routes from "../js/routes.js";
 import store from "../js/store";
 
 import SearchPanel from "./SearchPanel.vue";
-import 'framework7-icons'
+import "framework7-icons";
 
 export default {
   components: {
@@ -86,6 +86,7 @@ export default {
 
     onMounted(() => {
       f7ready(() => {
+        screen.orientation.lock("portrait");
         // Call F7 APIs here
       });
     });
@@ -119,7 +120,7 @@ export default {
   --f7-list-bg-color: #021021;
   --f7-toolbar-bg-color: #040a14;
   --f7-page-bg-color: #021021;
-  --f7-panel-bg-color: green;
   --skeleton-color: #07345e38;
+  --f7-panel-width: 100vw;
 }
 </style>
