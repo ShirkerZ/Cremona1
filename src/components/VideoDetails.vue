@@ -92,6 +92,11 @@ export default {
 <style lang="scss">
 .video-details {
   .video {
+    
+    p {
+      margin: 0;
+    }
+
     iframe {
       width: 100%;
       height: 30vh;
@@ -127,7 +132,7 @@ export default {
     .video {
       background: darkblue;
       width: 100%;
-      min-height: 20vh;
+      height: 30vh;
     }
     .details {
       margin: 1rem 1rem 0;
