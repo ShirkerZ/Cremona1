@@ -57,7 +57,7 @@ export default {
     a {
       width: 100%;
       padding: 0.5rem 0;
-      border-bottom: 1px solid #2c2c2c;
+      border-bottom: 1px solid #182534;
       &:last-child {
         border: none;
       }

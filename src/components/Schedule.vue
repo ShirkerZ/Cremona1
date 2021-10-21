@@ -64,16 +64,16 @@ export default {
     }
     tbody {
       tr {
-        border-bottom: 1px solid #2c2c2c;
+        border-bottom: 1px solid #182534;
 
         td {
           padding: 0.8rem 1rem 0.8rem 0;
           font-size: 0.7rem;
 
           .date {
-            border: 1px solid #07345e;
+            border: 1px solid #13538B;
             background: #07345e38;
-            color: #07345e;
+            color: #13538B;
             border-radius: 2rem;
             text-align: center;
             padding: 0 0.5rem;

@@ -65,6 +65,7 @@ import routes from "../js/routes.js";
 import store from "../js/store";
 
 import SearchPanel from "./SearchPanel.vue";
+import 'framework7-icons'
 
 export default {
   components: {
@@ -105,14 +106,20 @@ export default {
   box-sizing: border-box;
 }
 
-.f7-theme-color-bg-color {
-  --f7-theme-color-bg-color: #041B39
+.theme-dark {
+  --f7-page-bg-color: #021021 !important;
+  --f7-list-bg-color: #021021 !important;
+  --skeleton-color: #07345e38 !important;
 }
 
 :root {
---f7-color-primary: #041B39,
---f7-color-secondary: #021021,
---f7-theme-color-bg-color: #041B39
---f7-color-white: #041B39
+  --f7-navbar-bg-color: #021021;
+  --f7-theme-color: #eef0f3;
+  --f7-text-color: #eef0f3;
+  --f7-list-bg-color: #021021;
+  --f7-toolbar-bg-color: #040a14;
+  --f7-page-bg-color: #021021;
+  --f7-panel-bg-color: green;
+  --skeleton-color: #07345e38;
 }
 </style>

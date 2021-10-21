@@ -4,7 +4,7 @@
       <f7-page>
         <f7-navbar>
           <f7-nav-left class="cross panel-close">
-            <i class="icon icon-back"></i>
+            <i class="icon f7-icons">chevron_left</i>
           </f7-nav-left>
           <form @submit.prevent="handleSearch">
             <input

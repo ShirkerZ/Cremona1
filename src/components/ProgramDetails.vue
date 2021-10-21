@@ -3,8 +3,13 @@
     <f7-page>
       <f7-navbar>
         <f7-nav-left class="cross" @click="goBack">
-          <i class="icon icon-back"></i>
+          <i class="icon f7-icons">chevron_left</i>
         </f7-nav-left>
+        <div
+          class="program-title"
+          v-if="programDetails"
+          v-html="programDetails.title.rendered"
+        ></div>
         <f7-nav-right>
           <f7-link
             icon-ios="f7:search"
@@ -14,6 +19,7 @@
           ></f7-link>
         </f7-nav-right>
       </f7-navbar>
+
       <div class="program-container">
         <div class="program-info" v-if="programDetails">
           <img
@@ -167,6 +173,13 @@ export default {
 
 <style lang="scss" scoped>
 .program-details {
+  .program-title {
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
   .program-container {
     max-width: 100vw;
     .program-info {

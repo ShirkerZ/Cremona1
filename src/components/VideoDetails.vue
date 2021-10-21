@@ -3,7 +3,7 @@
     <f7-page>
       <f7-navbar>
         <f7-nav-right class="cross" @click="goBack">
-          <i class="icon icon-back"></i>
+          <i class="icon f7-icons">multiply</i>
         </f7-nav-right>
       </f7-navbar>
 

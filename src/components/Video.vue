@@ -65,7 +65,8 @@ export default {
 
     p {
       margin: 0;
-      color: rgb(243, 243, 243);
+      // color: rgb(243, 243, 243);
+      color: var(--f7-color-primary);
     }
 
     .title {
