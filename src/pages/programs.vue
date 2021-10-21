@@ -1,6 +1,6 @@
 <template>
   <f7-page name="programs">
-    <f7-navbar title="Programmi"></f7-navbar>
+    <Navbar />
     <div class="programs-container">
       <div class="programs-list" v-if="programList">
         <Program
@@ -33,12 +33,14 @@
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
 import Program from "../components/Program.vue";
 import { useStore } from "framework7-vue";
 import store from "../js/store.js";
 
 export default {
   components: {
+    Navbar,
     Program,
   },
 
