@@ -1,7 +1,7 @@
 <template>
-  <div class="result-programs-container">
+  <div class="result-programs-container" v-if="foundPrograms && foundPrograms.length">
     <div class="result-programs-label">Programmi</div>
-    <div class="result-programs" v-if="foundPrograms">
+    <div class="result-programs">
       <f7-link
         :href="`/program/${program.id}`"
         class="result-program"
@@ -69,7 +69,6 @@ export default {
       align-items: flex-start;
 
       .preview {
-        background: darkblue;
         width: 30vw;
         max-width: 30vw;
         height: 23vh;

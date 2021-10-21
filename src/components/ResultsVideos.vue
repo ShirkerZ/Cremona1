@@ -1,7 +1,7 @@
 <template>
-  <div class="result-videos-container">
+  <div class="result-videos-container" v-if="foundVideos && foundVideos.length">
     <div class="result-videos-label">Video</div>
-    <div class="result-videos" v-if="foundVideos">
+    <div class="result-videos">
       <f7-link
         :href="`/video/${video.id}`"
         class="result-video"

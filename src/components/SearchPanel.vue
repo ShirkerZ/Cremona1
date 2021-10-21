@@ -15,19 +15,21 @@
             />
           </form>
         </f7-navbar>
-        <div class="results-container" v-if="foundPrograms || foundVideos">
+        <div class="results-container">
           <div class="results-counter">
-            <div class="result-counter">
-              <div class="counter-label">Video</div>
-              <div class="counter">
-                {{ foundVideos.length }}
-              </div>
-            </div>
-            <div class="divider"></div>
             <div class="result-counter">
               <div class="counter-label">Programmi</div>
               <div class="counter">
-                {{ foundPrograms.length }}
+                {{ foundPrograms ? foundPrograms.length : 0 }}
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="result-counter">
+              <div class="counter-label">Video</div>
+              <div class="counter">
+                {{ foundVideos ? foundVideos.length : 0 }}
               </div>
             </div>
           </div>
@@ -87,10 +89,11 @@ export default {
   }
 
   .results-container {
-    padding: 1rem 0;
+    padding: 0 0 1rem;
 
     .results-counter {
-      padding: 0 1rem;
+      background: #07345e38;
+      padding: 0.5rem 1rem;
       display: flex;
       align-items: center;
       gap: 0 1rem;
@@ -102,7 +105,7 @@ export default {
         min-height: 40px;
         height: 100%;
         max-height: 100%;
-        background: white;
+        background: var(--f7-text-color);
       }
 
       .result-counter {
@@ -110,20 +113,18 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
 
         .counter-label {
-          font-size: 1rem;
+          // font-size: 1rem;
+          text-transform: uppercase;
         }
 
         .counter {
           width: 50%;
-          font-size: 1rem;
-          border: 1px solid #07345e;
-          background: #07345e38;
+          font-size: 1.5rem;
           color: #07345e;
-          border-radius: 2rem;
           text-align: center;
-          margin-top: 0.5rem;
         }
       }
     }
