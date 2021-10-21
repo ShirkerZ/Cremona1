@@ -63,12 +63,12 @@ export default {
   width: 100vw;
   padding: 1rem;
   box-sizing: border-box;
+  
   .programs-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
+    align-items: flex-start;
   }
 
   .skeleton-program-list {
