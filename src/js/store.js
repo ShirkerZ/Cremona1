@@ -88,15 +88,21 @@ const store = createStore({
     },
 
     fetchProgramDetails({ state }, payload) {
-      axios.get(`/wp-json/wp/v2/programma/${payload}?_fields=id, title, content, better_featured_image, presentatore`).then((res) => {
+      axios.get(`/wp-json/wp/v2/programma/${payload}?_fields=id, title, content, better_featured_image, presentatore, videos`).then((res) => {
         state.programDetails = res.data
       })
     },
 
-    fetchProgramVideos({ state }) {
-      axios.get('/wp-json/wp/v2/video?_fields=id, title, content, better_featured_image&per_page=10').then((res) => {
-        state.programVideos = res.data
-      })
+    async fetchProgramVideos({ state }, payload) {
+
+      state.programVideos = null
+      let relatedVideos = []
+
+      for (let video of payload) {
+        relatedVideos.push(await axios.get(`/wp-json/wp/v2/video/${video}/?_fields=id, title, content, better_featured_image`).then(res => res.data))
+      }
+
+      state.programVideos = relatedVideos
     },
 
     //  Schedule
@@ -133,14 +139,12 @@ const store = createStore({
     //  Search
     fetchSearchProgram({ state }, payload) {
       axios.get(`/wp-json/wp/v2/programma?search=${payload}&_fields=id, title, content, better_featured_image&per_page=10`).then(res => {
-        console.log("Search program: ", res.data)
         state.foundPrograms = res.data
       })
     },
 
     fetchSearchVideo({ state }, payload) {
       axios.get(`/wp-json/wp/v2/video?search=${payload}&_fields=id, title, content, better_featured_image&per_page=10`).then(res => {
-        console.log("Search video: ", res.data)
         state.foundVideos = res.data
       })
     },
