@@ -58,6 +58,51 @@
 
         <div class="videos-container">
           <div class="videos-label">Puntate</div>
+
+          <!-- Pagination -->
+          <div class="pagination" v-if="pages && pages > 1">
+            <i
+              class="icon f7-icons"
+              v-if="currentPage > 3"
+              @click="currentPage = 1"
+            >
+              chevron_left_2
+            </i>
+            <i
+              class="icon f7-icons"
+              v-if="currentPage > 1"
+              @click="currentPage--"
+            >
+              chevron_left
+            </i>
+
+            <button
+              class="pagination-btn"
+              :class="{ 'is-active': currentPage == btn }"
+              v-for="btn of paginationRange"
+              :key="btn"
+              @click="currentPage = btn"
+            >
+              {{ btn }}
+            </button>
+
+            <i
+              class="icon f7-icons"
+              v-if="pages != currentPage"
+              @click="currentPage++"
+            >
+              chevron_right
+            </i>
+            <i
+              class="icon f7-icons"
+              v-if="currentPage < pages - 2"
+              @click="currentPage = pages"
+            >
+              chevron_right_2
+            </i>
+          </div>
+
+          <!-- Related Videos -->
           <div class="videos" v-if="programVideos">
             <f7-link
               :href="`/video/${video.id}`"
@@ -131,12 +176,95 @@ export default {
   data() {
     return {
       showLess: true,
+      currentPage: 1,
+      videosPerPage: 10,
+      currentPageVideos: [],
+      paginationRange: [],
+      start: 0,
+      end: 0,
     };
   },
 
   mounted() {
     store.dispatch("fetchProgramDetails", this.programId);
-    store.dispatch("fetchProgramVideos");
+  },
+
+  methods: {
+    // Show only 5 pagination btn
+    handlePagination() {
+      let range = this.pageRange(this.currentPage, this.pages);
+      this.start = range.start;
+      this.end = range.end;
+      this.paginationRange = [];
+      for (let i = --this.start; i < this.end; i++) {
+        this.paginationRange.push(i + 1);
+      }
+    },
+
+    // Split videos array in smaller arrays
+    splitAllVideosArray() {
+      let allVideos = this.programDetails.videos;
+      let currentPageVideos = [];
+
+      for (let i = 0; i < allVideos.length; i += this.videosPerPage) {
+        currentPageVideos.push(allVideos.slice(i, i + this.videosPerPage));
+      }
+
+      this.currentPageVideos = currentPageVideos;
+    },
+
+    // Set first, last btns in order to show alway 5 btn
+    pageRange(currentPage, pages) {
+      let start = currentPage - 2,
+        end = currentPage + 2;
+
+      if (end > pages) {
+        start -= end - pages;
+        end = pages;
+      }
+      if (start <= 0) {
+        end += (start - 1) * -1;
+        start = 1;
+      }
+
+      end = end > pages ? pages : end;
+
+      return {
+        start: start,
+        end: end,
+      };
+    },
+  },
+
+  watch: {
+    programDetails(newValue, oldValue) {
+      this.handlePagination();
+      this.splitAllVideosArray();
+      store.dispatch(
+        "fetchProgramVideos",
+        this.currentPageVideos[this.currentPage - 1]
+      );
+    },
+
+    currentPage(newValue, oldValue) {
+      this.handlePagination();
+      store.dispatch(
+        "fetchProgramVideos",
+        this.currentPageVideos[this.currentPage - 1]
+      );
+    },
+  },
+
+  computed: {
+    pages() {
+      if (this.programDetails && this.programDetails.videos) {
+        let pages = Math.ceil(
+          this.programDetails.videos.length / this.videosPerPage
+        );
+        return pages;
+      }
+      return;
+    },
   },
 };
 </script>
@@ -225,6 +353,34 @@ export default {
             display: none;
           }
         }
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+
+      .pagination-btn {
+        display: flex;
+        justify-content: center;
+        max-width: 2.5rem;
+        padding: 0.5rem;
+        margin: 0 0.2rem;
+        border-radius: 0.2rem;
+        color: var(--f7-text-color);
+        background: var(--skeleton-color);
+        border: none;
+        outline: none;
+      }
+
+      .is-active {
+        background: #13538b;
+      }
+
+      .icon {
+        font-size: 1.5rem;
       }
     }
 
