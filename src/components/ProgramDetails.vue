@@ -16,6 +16,7 @@
             icon-aurora="f7:search"
             icon-md="material:search"
             panel-open="right"
+            @click="goBack"
           ></f7-link>
         </f7-nav-right>
       </f7-navbar>
@@ -149,11 +150,12 @@ export default {
           margin: 0;
         }
       }
+
       .show-less {
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        overflow: hidden;
+        overflow: hidden !important;
         white-space: initial;
       }
     }
