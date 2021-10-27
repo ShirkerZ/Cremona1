@@ -86,7 +86,7 @@ export default {
 
     onMounted(() => {
       f7ready(() => {
-        screen.orientation.lock("portrait");
+        // screen.orientation.lock("portrait");
         // Call F7 APIs here
       });
     });
