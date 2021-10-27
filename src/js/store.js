@@ -6,7 +6,9 @@ axios.defaults.baseURL = 'https://www.cremona1.it'
 
 const store = createStore({
   state: {
-    videoList: null,
+    lastVideosList: null,
+    newsList: null,
+    sportList: null,
     videoDetails: null,
     videoAdvertise: null,
     programList: null,
@@ -19,8 +21,16 @@ const store = createStore({
   },
 
   getters: {
-    videoList({ state }) {
-      return state.videoList
+    lastVideosList({ state }) {
+      return state.lastVideosList
+    },
+
+    newsList({ state }) {
+      return state.newsList
+    },
+
+    sportList({ state }) {
+      return state.sportList
     },
 
     videoDetails({ state }) {
@@ -62,9 +72,21 @@ const store = createStore({
 
   actions: {
     // Videos
-    fetchVideoList({ state }) {
+    fetchLastVideosList({ state }) {
       axios.get('/wp-json/wp/v2/video?_fields=id, title, content, better_featured_image').then((res) => {
-        state.videoList = res.data
+        state.lastVideosList = res.data
+      })
+    },
+
+    fetchNewsList({ state }) {
+      axios.get('/wp-json/wp/v2/video?_fields=id, title, content, better_featured_image').then((res) => {
+        state.newsList = res.data
+      })
+    },
+
+    fetchSportList({ state }) {
+      axios.get('/wp-json/wp/v2/video?tags=12, 23, 24, 26&_fields=id, title, content, better_featured_image').then((res) => {
+        state.sportList = res.data
       })
     },
 

@@ -5,10 +5,10 @@
     <Live />
 
     <div class="lists">
-      <NewsList />
-      <VideoList />
+      <VideoList category="news" />
+      <VideoList category="last" />
       <ProgramList />
-      <CategoryList />
+      <VideoList category="sport" />
     </div>
   </f7-page>
 </template>
@@ -16,19 +16,15 @@
 <script>
 import Navbar from "../components/Navbar.vue";
 import Live from "../components/Live.vue";
-import NewsList from "../components/NewsList.vue";
 import VideoList from "../components/VideoList.vue";
 import ProgramList from "../components/ProgramList.vue";
-import CategoryList from "../components/CategoryList.vue";
 
 export default {
   components: {
     Navbar,
     Live,
-    NewsList,
     VideoList,
     ProgramList,
-    CategoryList,
   },
 };
 </script>

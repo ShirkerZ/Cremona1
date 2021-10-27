@@ -1,7 +1,14 @@
 <template>
   <div class="list-container">
     <div>
-      <div class="list-label">Guarda le ultime puntate</div>
+      <!-- Labels -->
+      <div class="list-label" v-if="category == 'last'">
+        Guarda le ultime puntate
+      </div>
+      <div class="list-label" v-if="category == 'news'">Ultime notizie</div>
+      <div class="list-label" v-if="category == 'sport'">Sport</div>
+
+      <!-- Videos List -->
       <div class="list-videos" v-if="videoList">
         <Video
           v-for="video of videoList"
@@ -13,6 +20,7 @@
         />
       </div>
 
+      <!-- Skeleton -->
       <div class="skeleton-video-list" v-else>
         <div class="skeleton-video" v-for="skeleton of 5" :key="skeleton">
           <f7-skeleton-block class="skeleton-video-preview" effect="wave">
@@ -41,8 +49,24 @@ export default {
     Video,
   },
 
-  setup() {
-    const videoList = useStore("videoList");
+  props: {
+    category: String,
+  },
+
+  setup(props) {
+    const category = props.category;
+    let videoList = null;
+    switch (category) {
+      case "last":
+        videoList = useStore("lastVideosList");
+        break;
+      case "news":
+        videoList = useStore("newsList");
+        break;
+      case "sport":
+        videoList = useStore("sportList");
+        break;
+    }
 
     return {
       videoList,
@@ -50,7 +74,19 @@ export default {
   },
 
   mounted() {
-    store.dispatch("fetchVideoList");
+    switch (this.category) {
+      case "last":
+        store.dispatch("fetchLastVideosList");
+        break;
+
+      case "news":
+        store.dispatch("fetchNewsList");
+        break;
+
+      case "sport":
+        store.dispatch("fetchSportList");
+        break;
+    }
   },
 };
 </script>
