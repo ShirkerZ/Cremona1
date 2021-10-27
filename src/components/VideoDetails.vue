@@ -167,6 +167,9 @@ export default {
     margin-right: 0.5rem;
   }
   .video-container {
+    position: sticky;
+    top: 0;
+    background: var(--f7-page-bg-color);
     .video {
       width: 100%;
       height: 30vh;
